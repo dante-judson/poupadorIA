@@ -160,9 +160,36 @@ public class Ladrao extends ProgramaLadrao {
 	}
 	
 	public int verPoupador() {
+		
 		int[] visao = this.sensor.getVisaoIdentificacao();
-		int[] olfatoPoupador = this.sensor.getAmbienteOlfatoPoupador();
-		return 0;
+		
+		for(int i = 0; i < 24; i++) {
+			
+			if(visao[i] >= 100 && visao[i] <= 200) {
+				
+				if((i >= 0) && (i <= 9)) {
+					return CIMA;
+				} else {
+					if((i >= 14) && (i <= 23)) {
+						return BAIXO;
+					} else {
+						if((i == 10) || (i == 11)) {
+							return ESQUERDA;
+						} else {
+							if((i == 12) || (i == 13)) {
+								return DIREITA;
+							}
+						}
+					}
+				}
+				
+			}
+			
+		}
+		
+		int[] olfatoPoupador = this.sensor.getAmbienteOlfatoPoupador(); 
+		
+		return PARADO;
 	}
 	
 	private class Sucessor{
