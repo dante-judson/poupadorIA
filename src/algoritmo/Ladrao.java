@@ -134,6 +134,7 @@ public class Ladrao extends ProgramaLadrao {
 		
 	}
 	
+	// Checa existencia de um poupador no campo de visão
 	public int verPoupador() {
 		
 		int[] visao = this.sensor.getVisaoIdentificacao();
@@ -156,13 +157,44 @@ public class Ladrao extends ProgramaLadrao {
 							}
 						}
 					}
-				}
-				
+				}	
 			}
-			
-		}
+		} 
 		
 		return PARADO;
+	}
+	
+	// Checa se há marca olfativa de um poupador no campo de olfato
+	public int cheirarPoupador() {
+
+		int posicaoParaIr = 0;
+
+		int odorPosicao = 0;
+
+		int[] olfatoPoupador = this.sensor.getAmbienteOlfatoPoupador();
+
+		// Verificar qual posição do vetor tem o menor número diferente de zero, ou seja, qual odor foi gerado a menos unidades de tempo
+
+		for (int i = 0; i < olfatoPoupador.length; i++) {
+
+			if(olfatoPoupador[i]!=0) { // Se sentir Odor de Poupador				
+
+				if((odorPosicao!=0)&&(odorPosicao>olfatoPoupador[i])) { // Se Odor da Célula for Menor que Odor já Sentido
+
+					posicaoParaIr = i;
+
+					odorPosicao = olfatoPoupador[i];
+
+				} else { //Primeiro Odor Sentido
+
+					posicaoParaIr = i;
+
+					odorPosicao = olfatoPoupador[i];
+
+				}
+			}
+		}		
+		return posicaoParaIr;
 	}
 	
 	private class Sucessor{
