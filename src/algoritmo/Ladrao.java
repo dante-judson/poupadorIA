@@ -26,11 +26,13 @@ public class Ladrao extends ProgramaLadrao {
 
 	public int acao() {
 		Point posicaoAtual = sensor.getPosicao();
-		this.matriz[(int) posicaoAtual.getY() - 1][(int) posicaoAtual.getX() - 1]++;
+		this.matriz[(int) posicaoAtual.getY()][(int) posicaoAtual.getX()]++;
 
 		List<Sucessor> sucessores = getSucessor(posicaoAtual);
 		
-		persepcao(sucessores);
+		persepcao();
+		
+		printaMatriz();
 		
 		return tomarDecisao(sucessores);
 	}
@@ -67,50 +69,43 @@ public class Ladrao extends ProgramaLadrao {
 		return sucessores;
 	}
 	
-	private void persepcao(List<Sucessor> sucessores) {
+	
+	private void persepcao() {
 		int[] visao = sensor.getVisaoIdentificacao();
-//		printaMatriz();
-		for (Sucessor s : sucessores) {
-			if(s.acaoGeradora == CIMA) {
-				if(visao[VISAOCIMA] == 1) {
-					this.matriz[(int) s.posicao.getY() - 1][(int) s.posicao.getX() - 1] += 9;
-				}
-			}
-			
-			if(s.acaoGeradora == DIREITA) {
-				if(visao[VISAODIREITA] == 1) {
-					this.matriz[(int) s.posicao.getY() - 1][(int) s.posicao.getX() - 1] += 9;
-				}
-			}
-			
-			if(s.acaoGeradora == ESQUERDA) {
-				if(visao[VISAOESQUERDA] == 1) {
-					this.matriz[(int) s.posicao.getY() - 1][(int) s.posicao.getX() - 1] += 9;
-				}
-			}
-			
-			if(s.acaoGeradora == BAIXO) {
-				if(visao[VISAOBAIXO] == 1) {
-					this.matriz[(int) s.posicao.getY() - 1][(int) s.posicao.getX() - 1] += 9;
+		Point posicaoAtual = sensor.getPosicao();
+		int z = 0;
+		
+		for (int j = 0; j < 5; j++) {
+			for(int i = 0; i < 5; i++) {
+				if(i != 2 || j != 2) {
+					
+					if(visao[z] == 1 || visao[z] == 3) {
+						this.matriz[(j-2)+posicaoAtual.y][(i-2)+posicaoAtual.x] += 10;
+					}
+					
+					z++;
 				}
 			}
 		}
-//		printaMatriz();
 	}
+	
 	
 	private int tomarDecisao(List<Sucessor> sucessores) {
 		int menorEsforco = Integer.MAX_VALUE;
 		int decisao = PARADO;
-		
-		for (Sucessor s : sucessores) {
-			Point p = s.posicao;
-			
-			int esforco = utilidade(s);
-			if(esforco < menorEsforco) {
-				menorEsforco = esforco;
-				decisao = s.acaoGeradora;
+		if(verPoupador() == PARADO) {
+			for (Sucessor s : sucessores) {
+				
+				int esforco = utilidade(s);
+				if(esforco < menorEsforco) {
+					menorEsforco = esforco;
+					decisao = s.acaoGeradora;
+				}
 			}
+		} else {
+			decisao = verPoupador();
 		}
+		
 		
 		return decisao;
 	}
@@ -128,35 +123,15 @@ public class Ladrao extends ProgramaLadrao {
 	}
 	
 	private int utilidade(Sucessor sucessor) {
+		int visao[] = sensor.getVisaoIdentificacao();
+		int v[] = {0, VISAOCIMA, VISAOBAIXO, VISAODIREITA, VISAOESQUERDA};
 		
-		int[] visao = sensor.getVisaoIdentificacao();
-		
-		if(sucessor.acaoGeradora == CIMA) {
-			if(visao[VISAOCIMA] >= 100 && visao[VISAOCIMA] < 200) {
-				return (this.matriz[sucessor.posicao.y - 1][sucessor.posicao.x -1]) * (-2);
-			}
-			
+		if(visao[ v[sucessor.acaoGeradora] ] == 4 || visao[ v[sucessor.acaoGeradora] ] == 5) {
+			return (this.matriz[sucessor.posicao.y][sucessor.posicao.x]) + 10;
+		} else {
+			return (this.matriz[sucessor.posicao.y][sucessor.posicao.x]);
 		}
 		
-		if(sucessor.acaoGeradora == BAIXO) {
-			if(visao[VISAOBAIXO] >= 100 && visao[VISAOBAIXO] < 200) {
-				return (this.matriz[sucessor.posicao.y - 1][sucessor.posicao.x -1]) * (-2);
-			}
-		}
-		
-		if(sucessor.acaoGeradora == ESQUERDA) {
-			if(visao[VISAOESQUERDA] >= 100 && visao[VISAOESQUERDA] < 200) {
-				return (this.matriz[sucessor.posicao.y - 1][sucessor.posicao.x -1]) * (-2);
-			}
-		}
-		
-		if(sucessor.acaoGeradora == DIREITA) {
-			if(visao[VISAODIREITA] >= 100 && visao[VISAODIREITA] < 200) {
-				return (this.matriz[sucessor.posicao.y - 1][sucessor.posicao.x -1]) * (-2);
-			}
-		}
-		
-		return (this.matriz[sucessor.posicao.y - 1][sucessor.posicao.x -1]);
 	}
 	
 	public int verPoupador() {
@@ -186,8 +161,6 @@ public class Ladrao extends ProgramaLadrao {
 			}
 			
 		}
-		
-		int[] olfatoPoupador = this.sensor.getAmbienteOlfatoPoupador(); 
 		
 		return PARADO;
 	}
