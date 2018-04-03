@@ -126,7 +126,7 @@ public class Ladrao extends ProgramaLadrao {
 		int visao[] = sensor.getVisaoIdentificacao();
 		int v[] = {0, VISAOCIMA, VISAOBAIXO, VISAODIREITA, VISAOESQUERDA};
 		
-		if(visao[ v[sucessor.acaoGeradora] ] == 4 || visao[ v[sucessor.acaoGeradora] ] == 5) {
+		if(visao[ v[sucessor.acaoGeradora] ] == 4 || visao[ v[sucessor.acaoGeradora] ] == 5 || visao[ v[sucessor.acaoGeradora] ] > 200) {
 			return (this.matriz[sucessor.posicao.y][sucessor.posicao.x]) + 10;
 		} else {
 			return (this.matriz[sucessor.posicao.y][sucessor.posicao.x]);
@@ -140,7 +140,7 @@ public class Ladrao extends ProgramaLadrao {
 		
 		for(int i = 0; i < 24; i++) {
 			
-			if(visao[i] >= 100 && visao[i] <= 200) {
+			if(visao[i] >= 100 && visao[i] < 200) {
 				
 				if((i >= 0) && (i <= 9)) {
 					return CIMA;
