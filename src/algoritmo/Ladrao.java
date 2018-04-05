@@ -2,7 +2,9 @@ package algoritmo;
 
 import java.awt.Point;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 public class Ladrao extends ProgramaLadrao {
 
@@ -32,7 +34,7 @@ public class Ladrao extends ProgramaLadrao {
 		
 		persepcao();
 		
-		printaMatriz();
+//		printaMatriz();
 		
 		return tomarDecisao(sucessores);
 	}
@@ -92,16 +94,24 @@ public class Ladrao extends ProgramaLadrao {
 	
 	private int tomarDecisao(List<Sucessor> sucessores) {
 		int menorEsforco = Integer.MAX_VALUE;
+		ArrayList<Integer> decisoesPossiveis = new ArrayList<Integer>();
 		int decisao = PARADO;
 		if(verPoupador() == PARADO) {
+			
 			for (Sucessor s : sucessores) {
 				
 				int esforco = utilidade(s);
 				if(esforco < menorEsforco) {
+					decisoesPossiveis = new ArrayList<Integer>();
 					menorEsforco = esforco;
-					decisao = s.acaoGeradora;
+					decisoesPossiveis.add(s.acaoGeradora);
+				}
+				else if(esforco == menorEsforco) {
+					decisoesPossiveis.add(s.acaoGeradora);
 				}
 			}
+			
+			decisao = this.desempata(decisoesPossiveis.toArray(new Integer[decisoesPossiveis.size()]));
 		} else {
 			decisao = verPoupador();
 		}
@@ -132,6 +142,13 @@ public class Ladrao extends ProgramaLadrao {
 			return (this.matriz[sucessor.posicao.y][sucessor.posicao.x]);
 		}
 		
+	}
+	
+	private int desempata(Integer[] opcoes) {
+		Random gerador = new Random();
+		System.out.println(gerador.nextInt(opcoes.length));
+//		System.out.println(opcoes.length);
+		return opcoes[gerador.nextInt(opcoes.length)];
 	}
 	
 	// Checa existencia de um poupador no campo de visão
