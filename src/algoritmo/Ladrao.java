@@ -13,6 +13,7 @@ public class Ladrao extends ProgramaLadrao {
 	private final int BAIXO = 2;
 	private final int DIREITA = 3;
 	private final int ESQUERDA = 4;
+	private Point posAnterior;
 	
 	private final int VISAOCIMA = 7;
 	private final int VISAOBAIXO = 16;
@@ -28,6 +29,7 @@ public class Ladrao extends ProgramaLadrao {
 		this.roubou = false;
 		this.numMoedas = 0;
 		this.matriz = new int[30][30];
+		this.posAnterior = new Point();
 	}
 
 
@@ -43,7 +45,11 @@ public class Ladrao extends ProgramaLadrao {
 		
 //		printaMatriz();
 		
-		return tomarDecisao(sucessores);
+		int retorno = tomarDecisao(sucessores);
+		
+		this.posAnterior = sensor.getPosicao();
+		
+		return retorno;
 	}
 
 
@@ -161,8 +167,6 @@ public class Ladrao extends ProgramaLadrao {
 	
 	private int desempata(Integer[] opcoes) {
 		Random gerador = new Random();
-		System.out.println(gerador.nextInt(opcoes.length));
-//		System.out.println(opcoes.length);
 		return opcoes[gerador.nextInt(opcoes.length)];
 	}
 	
@@ -426,7 +430,7 @@ public class Ladrao extends ProgramaLadrao {
 	}
 	
 	private void confirmaRoubo() {
-		if( sensor.getNumeroDeMoedas() > this.numMoedas) {
+		if( sensor.getNumeroDeMoedas() > this.numMoedas || this.posAnterior.equals(sensor.getPosicao())) {
 			this.numMoedas = sensor.getNumeroDeMoedas();
 			this.roubou = true;
 		}
