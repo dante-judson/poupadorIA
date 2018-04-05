@@ -175,81 +175,81 @@ public class Ladrao extends ProgramaLadrao {
 			if(visao[i] >= 100 && visao[i] < 200) {
 				if((i >= 0) && (i <= 9)) {
 					
-					if(verObstaculos(7) == true) {
+					if(verObstaculos(VISAOCIMA) == true) {
 						return CIMA;
 					} else {
 						
 						switch(i) {
 						case 0:
-							if(((verObstaculos(5) == true) || (verObstaculos(6) == true)) && (verObstaculos(11) == true)) {
+							if(((verObstaculos(5) == true) || (verObstaculos(6) == true)) && (verObstaculos(VISAOESQUERDA) == true)) {
 								return ESQUERDA;
 							}
-							if(((verObstaculos(8) == true) || (verObstaculos(9) == true)) && (verObstaculos(12) == true)) {
+							if(((verObstaculos(8) == true) || (verObstaculos(9) == true)) && (verObstaculos(VISAODIREITA) == true)) {
 								return DIREITA;
 							}
 							break;
 						case 1:
-							if(((verObstaculos(5) == true) || (verObstaculos(6) == true)) && (verObstaculos(11) == true)) {
+							if(((verObstaculos(5) == true) || (verObstaculos(6) == true)) && (verObstaculos(VISAOESQUERDA) == true)) {
 								return ESQUERDA;
 							}
-							if(((verObstaculos(8) == true) || (verObstaculos(9) == true)) && (verObstaculos(12) == true)) {
+							if(((verObstaculos(8) == true) || (verObstaculos(9) == true)) && (verObstaculos(VISAODIREITA) == true)) {
 								return DIREITA;
 							}
 							break;
 						case 5:
-							if(((verObstaculos(5) == true) || (verObstaculos(6) == true)) && (verObstaculos(11) == true)) {
+							if(((verObstaculos(5) == true) || (verObstaculos(6) == true)) && (verObstaculos(VISAOESQUERDA) == true)) {
 								return ESQUERDA;
 							}
-							if(((verObstaculos(8) == true) || (verObstaculos(9) == true)) && (verObstaculos(12) == true)) {
+							if(((verObstaculos(8) == true) || (verObstaculos(9) == true)) && (verObstaculos(VISAODIREITA) == true)) {
 								return DIREITA;
 							}
 							break;
 						case 6:
-							if(((verObstaculos(5) == true) || (verObstaculos(6) == true)) && (verObstaculos(11) == true)) {
+							if(((verObstaculos(5) == true) || (verObstaculos(6) == true)) && (verObstaculos(VISAOESQUERDA) == true)) {
 								return ESQUERDA;
 							}
-							if(((verObstaculos(8) == true) || (verObstaculos(9) == true)) && (verObstaculos(12) == true)) {
+							if(((verObstaculos(8) == true) || (verObstaculos(9) == true)) && (verObstaculos(VISAODIREITA) == true)) {
 								return DIREITA;
 							}
 							break;
 						case 3:
-							if(((verObstaculos(8) == true) || (verObstaculos(9) == true)) && (verObstaculos(12) == true)) {
+							if(((verObstaculos(8) == true) || (verObstaculos(9) == true)) && (verObstaculos(VISAODIREITA) == true)) {
 								return DIREITA;
 							}
-							if(((verObstaculos(5) == true) || (verObstaculos(6) == true)) && (verObstaculos(11) == true)) {
+							if(((verObstaculos(5) == true) || (verObstaculos(6) == true)) && (verObstaculos(VISAOESQUERDA) == true)) {
 								return ESQUERDA;
 							}
 							break;
 						case 4:
-							if(((verObstaculos(8) == true) || (verObstaculos(9) == true)) && (verObstaculos(12) == true)) {
+							if(((verObstaculos(8) == true) || (verObstaculos(9) == true)) && (verObstaculos(VISAODIREITA) == true)) {
 								return DIREITA;
 							}
-							if(((verObstaculos(5) == true) || (verObstaculos(6) == true)) && (verObstaculos(11) == true)) {
+							if(((verObstaculos(5) == true) || (verObstaculos(6) == true)) && (verObstaculos(VISAOESQUERDA) == true)) {
 								return ESQUERDA;
 							}
 							break;
 						case 8:
-							if(((verObstaculos(8) == true) || (verObstaculos(9) == true)) && (verObstaculos(12) == true)) {
+							if(((verObstaculos(8) == true) || (verObstaculos(9) == true)) && (verObstaculos(VISAODIREITA) == true)) {
 								return DIREITA;
 							}
-							if(((verObstaculos(5) == true) || (verObstaculos(6) == true)) && (verObstaculos(11) == true)) {
+							if(((verObstaculos(5) == true) || (verObstaculos(6) == true)) && (verObstaculos(VISAOESQUERDA) == true)) {
 								return ESQUERDA;
 							}
 							break;
 						case 9:
-							if(((verObstaculos(8) == true) || (verObstaculos(9) == true)) && (verObstaculos(12) == true)) {
+							if(((verObstaculos(8) == true) || (verObstaculos(9) == true)) && (verObstaculos(VISAODIREITA) == true)) {
 								return DIREITA;
 							}
-							if(((verObstaculos(5) == true) || (verObstaculos(6) == true)) && (verObstaculos(11) == true)) {
+							if(((verObstaculos(5) == true) || (verObstaculos(6) == true)) && (verObstaculos(VISAOESQUERDA) == true)) {
 								return ESQUERDA;
 							}
 							break;
 						default:
-							if(((verObstaculos(5) == true) || (verObstaculos(6) == true)) && (verObstaculos(11) == true)) {
+							if(((verObstaculos(5) == true) || (verObstaculos(6) == true)) && (verObstaculos(VISAOESQUERDA) == true)) {
 								return ESQUERDA;
 							}
 							
-							if(((verObstaculos(8) == true) || (verObstaculos(9) == true)) && (verObstaculos(12) == true)) {
+							if(((verObstaculos(8) == true) || (verObstaculos(9) == true)) && (verObstaculos(VISAODIREITA) == true)) {
 								return DIREITA;
 							}
 						}	
@@ -258,81 +258,81 @@ public class Ladrao extends ProgramaLadrao {
 				} else {
 					if((i >= 14) && (i <= 23)) {
 							
-							if(verObstaculos(16) == true) {
+							if(verObstaculos(VISAOBAIXO) == true) {
 							return BAIXO;
 						} else {
 							
 							switch(i) {
 							case 14:
-								if(((verObstaculos(14) == true) || (verObstaculos(15) == true)) && (verObstaculos(11) == true)) {
+								if(((verObstaculos(14) == true) || (verObstaculos(15) == true)) && (verObstaculos(VISAOESQUERDA) == true)) {
 									return ESQUERDA;
 								}
-								if(((verObstaculos(17) == true) || (verObstaculos(18) == true)) && (verObstaculos(12) == true)) {
+								if(((verObstaculos(17) == true) || (verObstaculos(18) == true)) && (verObstaculos(VISAODIREITA) == true)) {
 									return DIREITA;
 								}
 								break;
 							case 15:
-								if(((verObstaculos(14) == true) || (verObstaculos(15) == true)) && (verObstaculos(11) == true)) {
+								if(((verObstaculos(14) == true) || (verObstaculos(15) == true)) && (verObstaculos(VISAOESQUERDA) == true)) {
 									return ESQUERDA;
 								}
-								if(((verObstaculos(17) == true) || (verObstaculos(18) == true)) && (verObstaculos(12) == true)) {
+								if(((verObstaculos(17) == true) || (verObstaculos(18) == true)) && (verObstaculos(VISAODIREITA) == true)) {
 									return DIREITA;
 								}
 								break;
 							case 19:
-								if(((verObstaculos(14) == true) || (verObstaculos(15) == true)) && (verObstaculos(11) == true)) {
+								if(((verObstaculos(14) == true) || (verObstaculos(15) == true)) && (verObstaculos(VISAOESQUERDA) == true)) {
 									return ESQUERDA;
 								}
-								if(((verObstaculos(17) == true) || (verObstaculos(18) == true)) && (verObstaculos(12) == true)) {
+								if(((verObstaculos(17) == true) || (verObstaculos(18) == true)) && (verObstaculos(VISAODIREITA) == true)) {
 									return DIREITA;
 								}
 								break;
 							case 20:
-								if(((verObstaculos(14) == true) || (verObstaculos(15) == true)) && (verObstaculos(11) == true)) {
+								if(((verObstaculos(14) == true) || (verObstaculos(15) == true)) && (verObstaculos(VISAOESQUERDA) == true)) {
 									return ESQUERDA;
 								}
-								if(((verObstaculos(17) == true) || (verObstaculos(18) == true)) && (verObstaculos(12) == true)) {
+								if(((verObstaculos(17) == true) || (verObstaculos(18) == true)) && (verObstaculos(VISAODIREITA) == true)) {
 									return DIREITA;
 								}
 								break;
 							case 17:
-								if(((verObstaculos(17) == true) || (verObstaculos(18) == true)) && (verObstaculos(12) == true)) {
+								if(((verObstaculos(17) == true) || (verObstaculos(18) == true)) && (verObstaculos(VISAODIREITA) == true)) {
 									return DIREITA;
 								}
-								if(((verObstaculos(14) == true) || (verObstaculos(15) == true)) && (verObstaculos(11) == true)) {
+								if(((verObstaculos(14) == true) || (verObstaculos(15) == true)) && (verObstaculos(VISAOESQUERDA) == true)) {
 									return ESQUERDA;
 								}
 								break;
 							case 18:
-								if(((verObstaculos(17) == true) || (verObstaculos(18) == true)) && (verObstaculos(12) == true)) {
+								if(((verObstaculos(17) == true) || (verObstaculos(18) == true)) && (verObstaculos(VISAODIREITA) == true)) {
 									return DIREITA;
 								}
-								if(((verObstaculos(14) == true) || (verObstaculos(15) == true)) && (verObstaculos(11) == true)) {
+								if(((verObstaculos(14) == true) || (verObstaculos(15) == true)) && (verObstaculos(VISAOESQUERDA) == true)) {
 									return ESQUERDA;
 								}
 								break;
 							case 22:
-								if(((verObstaculos(17) == true) || (verObstaculos(18) == true)) && (verObstaculos(12) == true)) {
+								if(((verObstaculos(17) == true) || (verObstaculos(18) == true)) && (verObstaculos(VISAODIREITA) == true)) {
 									return DIREITA;
 								}
-								if(((verObstaculos(14) == true) || (verObstaculos(15) == true)) && (verObstaculos(11) == true)) {
+								if(((verObstaculos(14) == true) || (verObstaculos(15) == true)) && (verObstaculos(VISAOESQUERDA) == true)) {
 									return ESQUERDA;
 								}
 								break;
 							case 23:
-								if(((verObstaculos(17) == true) || (verObstaculos(18) == true)) && (verObstaculos(12) == true)) {
+								if(((verObstaculos(17) == true) || (verObstaculos(18) == true)) && (verObstaculos(VISAODIREITA) == true)) {
 									return DIREITA;
 								}
-								if(((verObstaculos(14) == true) || (verObstaculos(15) == true)) && (verObstaculos(11) == true)) {
+								if(((verObstaculos(14) == true) || (verObstaculos(15) == true)) && (verObstaculos(VISAOESQUERDA) == true)) {
 									return ESQUERDA;
 								}
 								break;
 							default:
-								if(((verObstaculos(14) == true) || (verObstaculos(15) == true)) && (verObstaculos(11) == true)) {
+								if(((verObstaculos(14) == true) || (verObstaculos(15) == true)) && (verObstaculos(VISAOESQUERDA) == true)) {
 									return ESQUERDA;
 								}
 								
-								if(((verObstaculos(17) == true) || (verObstaculos(18) == true)) && (verObstaculos(12) == true)) {
+								if(((verObstaculos(17) == true) || (verObstaculos(18) == true)) && (verObstaculos(VISAODIREITA) == true)) {
 									return DIREITA;
 								}
 							}	
@@ -346,11 +346,11 @@ public class Ladrao extends ProgramaLadrao {
 							if(verObstaculos(11) == true) {
 								return ESQUERDA;
 							} else {
-								if(((verObstaculos(1) == true) || (verObstaculos(6) == true))  && (verObstaculos(7) == true)) {
+								if(((verObstaculos(1) == true) || (verObstaculos(6) == true))  && (verObstaculos(VISAOCIMA) == true)) {
 									return CIMA;
 								}
 								
-								if(((verObstaculos(15) == true) || (verObstaculos(20) == true))  && (verObstaculos(16) == true)) {
+								if(((verObstaculos(15) == true) || (verObstaculos(20) == true))  && (verObstaculos(VISAOBAIXO) == true)) {
 									return BAIXO;
 								}
 								return PARADO;
@@ -361,11 +361,11 @@ public class Ladrao extends ProgramaLadrao {
 								if(verObstaculos(12) == true) {
 									return DIREITA;
 								} else {
-									if(((verObstaculos(3) == true) || (verObstaculos(8) == true))  && (verObstaculos(7) == true)) {
+									if(((verObstaculos(3) == true) || (verObstaculos(8) == true))  && (verObstaculos(VISAOCIMA) == true)) {
 										return CIMA;
 									}
 									
-									if(((verObstaculos(17) == true) || (verObstaculos(22) == true))  && (verObstaculos(16) == true)) {
+									if(((verObstaculos(17) == true) || (verObstaculos(22) == true))  && (verObstaculos(VISAOBAIXO) == true)) {
 										return BAIXO;
 									}
 									return PARADO;
