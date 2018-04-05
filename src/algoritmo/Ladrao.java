@@ -115,22 +115,23 @@ public class Ladrao extends ProgramaLadrao {
 			
 			if(verPoupador() == PARADO) {
 				this.roubou = false;
-			}
-			
-			for (Sucessor s : sucessores) {
+			}			
+
+				for (Sucessor s : sucessores) {
+					
+					int esforco = utilidade(s);
+					if(esforco < menorEsforco) {
+						decisoesPossiveis = new ArrayList<Integer>();
+						menorEsforco = esforco;
+						decisoesPossiveis.add(s.acaoGeradora);
+					}
+					else if(esforco == menorEsforco) {
+						decisoesPossiveis.add(s.acaoGeradora);
+					}
+				}
 				
-				int esforco = utilidade(s);
-				if(esforco < menorEsforco) {
-					decisoesPossiveis = new ArrayList<Integer>();
-					menorEsforco = esforco;
-					decisoesPossiveis.add(s.acaoGeradora);
-				}
-				else if(esforco == menorEsforco) {
-					decisoesPossiveis.add(s.acaoGeradora);
-				}
-			}
+				decisao = this.desempata(decisoesPossiveis.toArray(new Integer[decisoesPossiveis.size()]));
 			
-			decisao = this.desempata(decisoesPossiveis.toArray(new Integer[decisoesPossiveis.size()]));
 		} else {
 			decisao = verPoupador();
 		}
@@ -426,8 +427,10 @@ public class Ladrao extends ProgramaLadrao {
 				}
 			}
 		}
-		
-		if ((posicaoParaIr==0)||(posicaoParaIr==1)||(posicaoParaIr==2)) {
+		if(odorPosicao == -1) {
+			return PARADO;
+		}
+		if ((posicaoParaIr==1)||(posicaoParaIr==2)) {
 			return CIMA;			
 		}
 		if ((posicaoParaIr==5)||(posicaoParaIr==6)||(posicaoParaIr==7)) {
