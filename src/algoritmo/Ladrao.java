@@ -19,14 +19,21 @@ public class Ladrao extends ProgramaLadrao {
 	private final int VISAODIREITA = 12;
 	private final int VISAOESQUERDA = 11;
 	
+	private boolean roubou;
+	private int numMoedas;
+	
 	private int[][] matriz;
 
 	Ladrao(){
+		this.roubou = false;
+		this.numMoedas = 0;
 		this.matriz = new int[30][30];
 	}
 
 
 	public int acao() {
+		
+		confirmaRoubo();
 		Point posicaoAtual = sensor.getPosicao();
 		this.matriz[(int) posicaoAtual.getY()][(int) posicaoAtual.getX()]++;
 
@@ -93,10 +100,16 @@ public class Ladrao extends ProgramaLadrao {
 	
 	
 	private int tomarDecisao(List<Sucessor> sucessores) {
+		
 		int menorEsforco = Integer.MAX_VALUE;
+		
 		ArrayList<Integer> decisoesPossiveis = new ArrayList<Integer>();
 		int decisao = PARADO;
-		if(verPoupador() == PARADO) {
+		if(verPoupador() == PARADO || this.roubou) {
+			
+			if(verPoupador() == PARADO) {
+				this.roubou = false;
+			}
 			
 			for (Sucessor s : sucessores) {
 				
@@ -136,7 +149,9 @@ public class Ladrao extends ProgramaLadrao {
 		int visao[] = sensor.getVisaoIdentificacao();
 		int v[] = {0, VISAOCIMA, VISAOBAIXO, VISAODIREITA, VISAOESQUERDA};
 		
-		if(visao[ v[sucessor.acaoGeradora] ] == 4 || visao[ v[sucessor.acaoGeradora] ] == 5 || visao[ v[sucessor.acaoGeradora] ] > 200) {
+		if(visao[ v[sucessor.acaoGeradora] ] == 4 
+				|| visao[ v[sucessor.acaoGeradora] ] == 5 
+				|| visao[ v[sucessor.acaoGeradora] ] > 100) {
 			return (this.matriz[sucessor.posicao.y][sucessor.posicao.x]) + 10;
 		} else {
 			return (this.matriz[sucessor.posicao.y][sucessor.posicao.x]);
@@ -212,6 +227,13 @@ public class Ladrao extends ProgramaLadrao {
 			}
 		}		
 		return posicaoParaIr;
+	}
+	
+	private void confirmaRoubo() {
+		if( sensor.getNumeroDeMoedas() > this.numMoedas) {
+			this.numMoedas = sensor.getNumeroDeMoedas();
+			this.roubou = true;
+		}
 	}
 	
 	private class Sucessor{
