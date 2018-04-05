@@ -168,32 +168,228 @@ public class Ladrao extends ProgramaLadrao {
 	
 	// Checa existencia de um poupador no campo de visão
 	public int verPoupador() {
-		
 		int[] visao = this.sensor.getVisaoIdentificacao();
 		
 		for(int i = 0; i < 24; i++) {
 			
 			if(visao[i] >= 100 && visao[i] < 200) {
-				
 				if((i >= 0) && (i <= 9)) {
-					return CIMA;
+					
+					if(verObstaculos(7) == true) {
+						return CIMA;
+					} else {
+						
+						switch(i) {
+						case 0:
+							if(((verObstaculos(5) == true) || (verObstaculos(6) == true)) && (verObstaculos(11) == true)) {
+								return ESQUERDA;
+							}
+							if(((verObstaculos(8) == true) || (verObstaculos(9) == true)) && (verObstaculos(12) == true)) {
+								return DIREITA;
+							}
+							break;
+						case 1:
+							if(((verObstaculos(5) == true) || (verObstaculos(6) == true)) && (verObstaculos(11) == true)) {
+								return ESQUERDA;
+							}
+							if(((verObstaculos(8) == true) || (verObstaculos(9) == true)) && (verObstaculos(12) == true)) {
+								return DIREITA;
+							}
+							break;
+						case 5:
+							if(((verObstaculos(5) == true) || (verObstaculos(6) == true)) && (verObstaculos(11) == true)) {
+								return ESQUERDA;
+							}
+							if(((verObstaculos(8) == true) || (verObstaculos(9) == true)) && (verObstaculos(12) == true)) {
+								return DIREITA;
+							}
+							break;
+						case 6:
+							if(((verObstaculos(5) == true) || (verObstaculos(6) == true)) && (verObstaculos(11) == true)) {
+								return ESQUERDA;
+							}
+							if(((verObstaculos(8) == true) || (verObstaculos(9) == true)) && (verObstaculos(12) == true)) {
+								return DIREITA;
+							}
+							break;
+						case 3:
+							if(((verObstaculos(8) == true) || (verObstaculos(9) == true)) && (verObstaculos(12) == true)) {
+								return DIREITA;
+							}
+							if(((verObstaculos(5) == true) || (verObstaculos(6) == true)) && (verObstaculos(11) == true)) {
+								return ESQUERDA;
+							}
+							break;
+						case 4:
+							if(((verObstaculos(8) == true) || (verObstaculos(9) == true)) && (verObstaculos(12) == true)) {
+								return DIREITA;
+							}
+							if(((verObstaculos(5) == true) || (verObstaculos(6) == true)) && (verObstaculos(11) == true)) {
+								return ESQUERDA;
+							}
+							break;
+						case 8:
+							if(((verObstaculos(8) == true) || (verObstaculos(9) == true)) && (verObstaculos(12) == true)) {
+								return DIREITA;
+							}
+							if(((verObstaculos(5) == true) || (verObstaculos(6) == true)) && (verObstaculos(11) == true)) {
+								return ESQUERDA;
+							}
+							break;
+						case 9:
+							if(((verObstaculos(8) == true) || (verObstaculos(9) == true)) && (verObstaculos(12) == true)) {
+								return DIREITA;
+							}
+							if(((verObstaculos(5) == true) || (verObstaculos(6) == true)) && (verObstaculos(11) == true)) {
+								return ESQUERDA;
+							}
+							break;
+						default:
+							if(((verObstaculos(5) == true) || (verObstaculos(6) == true)) && (verObstaculos(11) == true)) {
+								return ESQUERDA;
+							}
+							
+							if(((verObstaculos(8) == true) || (verObstaculos(9) == true)) && (verObstaculos(12) == true)) {
+								return DIREITA;
+							}
+						}	
+						return PARADO;
+					}
 				} else {
 					if((i >= 14) && (i <= 23)) {
-						return BAIXO;
+							
+							if(verObstaculos(16) == true) {
+							return BAIXO;
+						} else {
+							
+							switch(i) {
+							case 14:
+								if(((verObstaculos(14) == true) || (verObstaculos(15) == true)) && (verObstaculos(11) == true)) {
+									return ESQUERDA;
+								}
+								if(((verObstaculos(17) == true) || (verObstaculos(18) == true)) && (verObstaculos(12) == true)) {
+									return DIREITA;
+								}
+								break;
+							case 15:
+								if(((verObstaculos(14) == true) || (verObstaculos(15) == true)) && (verObstaculos(11) == true)) {
+									return ESQUERDA;
+								}
+								if(((verObstaculos(17) == true) || (verObstaculos(18) == true)) && (verObstaculos(12) == true)) {
+									return DIREITA;
+								}
+								break;
+							case 19:
+								if(((verObstaculos(14) == true) || (verObstaculos(15) == true)) && (verObstaculos(11) == true)) {
+									return ESQUERDA;
+								}
+								if(((verObstaculos(17) == true) || (verObstaculos(18) == true)) && (verObstaculos(12) == true)) {
+									return DIREITA;
+								}
+								break;
+							case 20:
+								if(((verObstaculos(14) == true) || (verObstaculos(15) == true)) && (verObstaculos(11) == true)) {
+									return ESQUERDA;
+								}
+								if(((verObstaculos(17) == true) || (verObstaculos(18) == true)) && (verObstaculos(12) == true)) {
+									return DIREITA;
+								}
+								break;
+							case 17:
+								if(((verObstaculos(17) == true) || (verObstaculos(18) == true)) && (verObstaculos(12) == true)) {
+									return DIREITA;
+								}
+								if(((verObstaculos(14) == true) || (verObstaculos(15) == true)) && (verObstaculos(11) == true)) {
+									return ESQUERDA;
+								}
+								break;
+							case 18:
+								if(((verObstaculos(17) == true) || (verObstaculos(18) == true)) && (verObstaculos(12) == true)) {
+									return DIREITA;
+								}
+								if(((verObstaculos(14) == true) || (verObstaculos(15) == true)) && (verObstaculos(11) == true)) {
+									return ESQUERDA;
+								}
+								break;
+							case 22:
+								if(((verObstaculos(17) == true) || (verObstaculos(18) == true)) && (verObstaculos(12) == true)) {
+									return DIREITA;
+								}
+								if(((verObstaculos(14) == true) || (verObstaculos(15) == true)) && (verObstaculos(11) == true)) {
+									return ESQUERDA;
+								}
+								break;
+							case 23:
+								if(((verObstaculos(17) == true) || (verObstaculos(18) == true)) && (verObstaculos(12) == true)) {
+									return DIREITA;
+								}
+								if(((verObstaculos(14) == true) || (verObstaculos(15) == true)) && (verObstaculos(11) == true)) {
+									return ESQUERDA;
+								}
+								break;
+							default:
+								if(((verObstaculos(14) == true) || (verObstaculos(15) == true)) && (verObstaculos(11) == true)) {
+									return ESQUERDA;
+								}
+								
+								if(((verObstaculos(17) == true) || (verObstaculos(18) == true)) && (verObstaculos(12) == true)) {
+									return DIREITA;
+								}
+							}	
+							return PARADO;
+							
+						}
+				
 					} else {
 						if((i == 10) || (i == 11)) {
-							return ESQUERDA;
+							
+							if(verObstaculos(11) == true) {
+								return ESQUERDA;
+							} else {
+								if(((verObstaculos(1) == true) || (verObstaculos(6) == true))  && (verObstaculos(7) == true)) {
+									return CIMA;
+								}
+								
+								if(((verObstaculos(15) == true) || (verObstaculos(20) == true))  && (verObstaculos(16) == true)) {
+									return BAIXO;
+								}
+								return PARADO;
+							}
 						} else {
 							if((i == 12) || (i == 13)) {
-								return DIREITA;
+								
+								if(verObstaculos(12) == true) {
+									return DIREITA;
+								} else {
+									if(((verObstaculos(3) == true) || (verObstaculos(8) == true))  && (verObstaculos(7) == true)) {
+										return CIMA;
+									}
+									
+									if(((verObstaculos(17) == true) || (verObstaculos(22) == true))  && (verObstaculos(16) == true)) {
+										return BAIXO;
+									}
+									return PARADO;
+								}
 							}
 						}
 					}
 				}	
 			}
+			
 		} 
-		
 		return PARADO;
+	}
+	
+	// Checa se determinada célula possui parede, banco, moeda ou pastilha do poder
+	public boolean verObstaculos(int celula) {
+		
+		int[] visao = this.sensor.getVisaoIdentificacao();
+		
+		if((visao[celula] == 1) || (visao[celula] == 3) || (visao[celula] == 4) || (visao[celula] == 5)) {
+			return false;
+		}
+		
+		return true;
 	}
 	
 	// Checa se há marca olfativa de um poupador no campo de olfato
