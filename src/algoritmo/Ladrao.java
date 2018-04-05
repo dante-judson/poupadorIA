@@ -405,13 +405,13 @@ public class Ladrao extends ProgramaLadrao {
 
 		int[] olfatoPoupador = this.sensor.getAmbienteOlfatoPoupador();
 
-		// Verificar qual posição do vetor tem o menor número diferente de zero, ou seja, qual odor foi gerado a menos unidades de tempo
+		// Verificar qual posiÃ§Ã£o do vetor tem o menor nÃºmero diferente de zero, ou seja, qual odor foi gerado a menos unidades de tempo
 
 		for (int i = 0; i < olfatoPoupador.length; i++) {
 
 			if(olfatoPoupador[i]!=0) { // Se sentir Odor de Poupador				
 
-				if((odorPosicao!=0)&&(odorPosicao>olfatoPoupador[i])) { // Se Odor da Célula for Menor que Odor já Sentido
+				if((odorPosicao!=0)&&(odorPosicao>olfatoPoupador[i])) { // Se Odor da CÃ©lula for Menor que Odor jÃ¡ Sentido
 
 					posicaoParaIr = i;
 
@@ -425,8 +425,22 @@ public class Ladrao extends ProgramaLadrao {
 
 				}
 			}
-		}		
-		return posicaoParaIr;
+		}
+		
+		if ((posicaoParaIr==0)||(posicaoParaIr==1)||(posicaoParaIr==2)) {
+			return CIMA;			
+		}
+		if ((posicaoParaIr==5)||(posicaoParaIr==6)||(posicaoParaIr==7)) {
+			return BAIXO;
+		}
+		if (posicaoParaIr==3) {
+			return ESQUERDA;
+		}
+		if (posicaoParaIr==4) {
+			return DIREITA;
+		} else {
+			return PARADO;
+		}
 	}
 	
 	private void confirmaRoubo() {
